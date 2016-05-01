@@ -6,6 +6,7 @@ import com.rizki.mufrizal.pelayanan.labti.service.LaporanService;
 import com.rizki.mufrizal.pelayanan.labti.service.PraktikumService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,12 +33,14 @@ public class LaporanController {
     @Autowired
     private PraktikumService praktikumService;
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/Laporan", method = RequestMethod.GET)
     public String ambilLaporan(Model model) {
         model.addAttribute("laporans", laporanService.getLaporans());
         return "LaporanView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/TambahLaporan", method = RequestMethod.GET)
     public String tambahLaporan(Model model) {
         model.addAttribute("laporan", new Laporan());
@@ -45,6 +48,7 @@ public class LaporanController {
         return "LaporanTambahView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/SimpanLaporan", method = RequestMethod.POST)
     public String simpanLaporan(@ModelAttribute("laporan") @Valid Laporan laporan, BindingResult result) {
 
@@ -55,6 +59,7 @@ public class LaporanController {
         return "redirect:/Laporan";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/EditLaporan/{idLaporan}", method = RequestMethod.GET)
     public String editLaporan(Model model, @PathVariable("idLaporan") String idLaporan) {
         model.addAttribute("laporan", laporanService.getLaporan(idLaporan));
@@ -62,6 +67,7 @@ public class LaporanController {
         return "LaporanEditView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/UpdateLaporan", method = RequestMethod.POST)
     public String updateLaporan(@ModelAttribute("laporan") Laporan laporan) {
 
@@ -72,6 +78,7 @@ public class LaporanController {
         return "redirect:/Laporan";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/HapusLaporan/{idLaporan}", method = RequestMethod.GET)
     public String hapusLaporan(@PathVariable("idLaporan") String idLaporan) {
         laporanService.hapusLaporan(idLaporan);

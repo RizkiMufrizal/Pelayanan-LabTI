@@ -3,6 +3,7 @@ package com.rizki.mufrizal.pelayanan.labti.controller;
 import com.rizki.mufrizal.pelayanan.labti.domain.Praktikum;
 import com.rizki.mufrizal.pelayanan.labti.service.PraktikumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,36 +26,42 @@ public class PraktikumController {
     @Autowired
     private PraktikumService praktikumService;
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/Praktikum", method = RequestMethod.GET)
     public String ambilPraktikum(Model model) {
         model.addAttribute("praktikums", praktikumService.getPraktikums());
         return "PraktikumView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/TambahPraktikum", method = RequestMethod.GET)
     public String tambahPraktikum(Model model) {
         model.addAttribute("praktikum", new Praktikum());
         return "PraktikumTambahView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/SimpanPraktikum", method = RequestMethod.POST)
     public String simpanPraktikum(@ModelAttribute("praktikum") Praktikum praktikum) {
         praktikumService.simpanPraktikum(praktikum);
         return "redirect:/Praktikum";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/EditPraktikum/{idPraktikum}", method = RequestMethod.GET)
     public String editPraktikum(Model model, @PathVariable("idPraktikum") String idPraktikum) {
         model.addAttribute("praktikum", praktikumService.getPraktikum(idPraktikum));
         return "PraktikumEditView";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/UpdatePraktikum", method = RequestMethod.POST)
     public String updatePraktikum(@ModelAttribute("praktikum") Praktikum praktikum) {
         praktikumService.ubahPraktikum(praktikum);
         return "redirect:/Praktikum";
     }
 
+    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/HapusPraktikum/{idPraktikum}", method = RequestMethod.GET)
     public String hapusPraktikum(@PathVariable("idPraktikum") String idPraktikum) {
         praktikumService.hapusPraktikum(praktikumService.getPraktikum(idPraktikum));
