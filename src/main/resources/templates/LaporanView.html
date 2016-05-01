@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+    @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+    @Since Apr 30, 2016
+    @Time 10:22:38 PM
+    @Encoding UTF-8
+    @Project Pelayanan-LabTI
+    @Package Expression package is undefined on line 8, column 16 in Templates/JSP_Servlet/Html.html.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Login</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/datatables/1.10.11/media/css/dataTables.bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/stylesheet/sb-admin.css}" />
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="Navbar :: navbar"></div>
+
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Dashboard
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li class="active">
+                                    <i class="glyphicon glyphicon-dashboard"></i> Data Laporan
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <a th:href="@{/TambahLaporan}">
+                                <button class="btn btn-primary">
+                                    Tambah
+                                </button>
+                            </a>
+
+                            <p></p>
+
+                            <table id="laporan" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">NPM</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">Kelas</th>
+                                        <th class="text-center">Tanggal Lapor</th>
+                                        <th class="text-center">Praktikum</th>
+                                        <th class="text-center">Pertemuan</th>
+                                        <th class="text-center">Keterangan</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="l,x : ${laporans}">
+                                        <td class="text-center" th:text="${x.index + 1}"></td>
+                                        <td th:text="${l.npm}"></td>
+                                        <td th:text="${l.nama}"></td>
+                                        <td th:text="${l.kelas}"></td>
+                                        <td th:text="${l.tanggalLapor}"></td>
+                                        <td th:text="${l.praktikum.namaPraktikum}"></td>
+                                        <td th:text="${l.pertemuan}"></td>
+                                        <td th:text="${l.keterangan}"></td>
+                                        <td class="text-center">
+                                            <a th:href="@{/EditLaporan/{idLaporan}(idLaporan=${l.idLaporan})}">
+                                                <button type="button" class="btn btn-success">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                </button>
+                                            </a>
+                                            <a th:href="@{/HapusLaporan/{idLaporan}(idLaporan=${l.idLaporan})}">
+                                                <button type="button" class="btn btn-danger">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/1.12.3/dist/jquery.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/datatables/1.10.11/media/js/jquery.dataTables.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/datatables/1.10.11/media/js/dataTables.bootstrap.min.js}" type="application/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#laporan').DataTable();
+            });
+        </script>
+
+    </body>
+</html>
