@@ -64,7 +64,7 @@ public class PraktikumController {
     @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/HapusPraktikum/{idPraktikum}", method = RequestMethod.GET)
     public String hapusPraktikum(@PathVariable("idPraktikum") String idPraktikum) {
-        praktikumService.hapusPraktikum(praktikumService.getPraktikum(idPraktikum));
+        praktikumService.hapusPraktikum(idPraktikum);
         return "redirect:/Praktikum";
     }
 
