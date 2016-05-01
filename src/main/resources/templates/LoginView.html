@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+    @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+    @Since May 1, 2016
+    @Time 9:42:22 AM
+    @Encoding UTF-8
+    @Project Pelayanan-LabTI
+    @Package Expression package is undefined on line 8, column 16 in Templates/Other/html.html.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Login</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/stylesheet/signin.css}" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+
+        <div class="container">
+
+            <form class="form-signin" th:action="@{/login}" method="post">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="true" autofocus="" />
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="true" />
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" /> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+
+        </div>
+
+        <script th:src="@{/webjars/jquery/1.12.3/dist/jquery.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js}" type="application/javascript"></script>
+
+    </body>
+</html>
