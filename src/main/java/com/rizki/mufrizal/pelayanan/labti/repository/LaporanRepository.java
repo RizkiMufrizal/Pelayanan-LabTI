@@ -13,5 +13,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  *
  */
 public interface LaporanRepository extends PagingAndSortingRepository<Laporan, String> {
-    
+
+    Long countByNpmAndPraktikumIdPraktikum(String npm, String idPraktikum);
+
 }
