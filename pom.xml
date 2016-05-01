@@ -72,19 +72,25 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency>
-        
+                
         <dependency>
             <groupId>org.webjars.bower</groupId>
-            <artifactId>jquery</artifactId>
-            <version>2.2.3</version>
+            <artifactId>datatables</artifactId>
+            <version>1.10.11</version>
         </dependency>
         
         <dependency>
             <groupId>org.webjars.bower</groupId>
-            <artifactId>materialize</artifactId>
-            <version>0.97.6</version>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.6</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>select2</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
     </dependencies>
 	
     <build>
