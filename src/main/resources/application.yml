@@ -1,0 +1,55 @@
+##
+ # @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+ # @Since Apr 30, 2016
+ # @Time 10:25:28 PM
+ # @Encoding ISO-8859-1
+ # @Project Pelayanan-LabTI
+ # @Package Expression package is undefined on line 7, column 15 in Templates/Other/yml.properties.
+ #
+ ##
+ 
+spring:
+    profiles:
+        active: development
+        
+    # spring datasource jpa
+    datasource: 
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/pelayanan?autoReconnect=true
+        username: root
+        password: root
+        poolName: SpringBootHikariCP
+        maximumPoolSize: 5
+        minimumIdle: 3
+        maxLifetime: 2000000
+        connectionTimeout: 30000
+        idleTimeout: 30000
+    
+    # spring hibernate    
+    jpa: 
+        generate-ddl: true
+        show-sql: true
+        properties: 
+            hibernate: 
+                format_sql: true
+        database-platform: org.hibernate.dialect.MySQL5Dialect
+
+    # jackson config
+    jackson: 
+        serialization: 
+            indent_output: true
+
+    # spring devtools
+    devtools: 
+        livereload: 
+            enabled: true
+
+    # spring thymeleaf
+    thymeleaf: 
+        cache: false
+
+# tomcat konfiguration
+server: 
+    tomcat: 
+        access_log_enabled: true
+        basedir: target/tomcat
