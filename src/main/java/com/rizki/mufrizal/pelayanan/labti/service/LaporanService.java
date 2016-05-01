@@ -23,4 +23,6 @@ public interface LaporanService {
 
     public Iterable<Laporan> getLaporans();
 
+    public Long countByNpmAndPraktikumIdPraktikum(String npm, String idPraktikum);
+
 }
