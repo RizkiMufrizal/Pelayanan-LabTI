@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!--
+    @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+    @Since May 1, 2016
+    @Time 5:09:26 PM
+    @Encoding UTF-8
+    @Project Pelayanan-LabTI
+    @Package Expression package is undefined on line 8, column 16 in Templates/XML/XMLDocument.xml.
+-->
+<eh:config xmlns='http://www.ehcache.org/v3'
+           xmlns:eh='http://www.ehcache.org/v3'
+           xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+           xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache alias="laporan">
+        <expiry>
+            <ttl unit="seconds">600</ttl>
+        </expiry>
+        <heap unit="entries">200</heap>
+    </cache>
+    
+    <cache alias="praktikum">
+        <expiry>
+            <ttl unit="seconds">300</ttl>
+        </expiry>
+        <heap unit="entries">100</heap>
+    </cache>
+
+</eh:config>
