@@ -36,8 +36,8 @@ public class Praktikum implements Serializable {
     @Column(name = "nama_praktikum", length = 50)
     private String namaPraktikum;
 
-    @Column(name = "jumlah_praktikum")
-    private Integer jumlahPraktikum;
+    @Column(name = "jumlah_pertemuan")
+    private Integer jumlahPertemuan;
 
     @Column(name = "batas_jumlah_tidak_masuk")
     private Integer batasJumlahTidakMasuk;
@@ -75,17 +75,17 @@ public class Praktikum implements Serializable {
     }
 
     /**
-     * @return the jumlahPraktikum
+     * @return the jumlahPertemuan
      */
-    public Integer getJumlahPraktikum() {
-        return jumlahPraktikum;
+    public Integer getJumlahPertemuan() {
+        return jumlahPertemuan;
     }
 
     /**
-     * @param jumlahPraktikum the jumlahPraktikum to set
+     * @param jumlahPertemuan the jumlahPertemuan to set
      */
-    public void setJumlahPraktikum(Integer jumlahPraktikum) {
-        this.jumlahPraktikum = jumlahPraktikum;
+    public void setJumlahPertemuan(Integer jumlahPertemuan) {
+        this.jumlahPertemuan = jumlahPertemuan;
     }
 
     /**
