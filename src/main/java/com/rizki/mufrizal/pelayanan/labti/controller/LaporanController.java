@@ -53,6 +53,13 @@ public class LaporanController {
     public String simpanLaporan(@ModelAttribute("laporan") @Valid Laporan laporan, BindingResult result) {
 
         Praktikum praktikum = praktikumService.getPraktikum(laporan.getPraktikum().getIdPraktikum());
+
+        Long jumlahTidakMasuk = laporanService.countByNpmAndPraktikumIdPraktikum(laporan.getNpm(), praktikum.getIdPraktikum());
+
+        if (jumlahTidakMasuk.intValue() + 1 > praktikum.getBatasJumlahTidakMasuk()) {
+            return "redirect:/TambahLaporan?jumlahTidakMasukMelebihiBatas";
+        }
+
         laporan.setPraktikum(praktikum);
 
         laporanService.simpanLaporan(laporan);
