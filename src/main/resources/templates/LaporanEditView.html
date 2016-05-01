@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+    @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+    @Since May 1, 2016
+    @Time 1:01:02 PM
+    @Encoding UTF-8
+    @Project Pelayanan-LabTI
+    @Package Expression package is undefined on line 8, column 16 in Templates/Other/html.html.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Login</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/select2/4.0.2/dist/css/select2.min.css}" />
+        <link rel="stylesheet" th:href="@{/stylesheet/sb-admin.css}" />
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="Navbar :: navbar"></div>
+
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Dashboard
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li class="active">
+                                    <i class="glyphicon glyphicon-dashboard"></i> Ubah Laporan
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form th:object="${laporan}" th:action="@{/UpdateLaporan}" method="post">
+                                <div class="form-group">
+                                    <label>ID Laporan</label>
+                                    <input th:value="${laporan.idLaporan}" th:field="*{idLaporan}" type="text" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>NPM</label>
+                                    <input th:value="${laporan.npm}" th:field="*{npm}" type="text" class="form-control" placeholder="Masukkan NPM" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <input th:value="${laporan.nama}" th:field="*{nama}" type="text" class="form-control" placeholder="Masukkan Nama" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Kelas</label>
+                                    <input th:value="${laporan.kelas}" th:field="*{kelas}" type="text" class="form-control" placeholder="Masukkan Kelas" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Lapor</label>
+                                    <input th:value="${laporan.tanggalLapor}" th:field="*{tanggalLapor}" type="date" class="form-control" placeholder="Masukkan Tanggal Lapor" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Praktikum</label>
+                                    <select th:field="*{praktikum.idPraktikum}" class="form-control" multiple="multiple">
+                                        <option th:each="p : ${praktikums}" th:value="${p.idPraktikum}" th:text="${p.namaPraktikum}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Pertemuan</label>
+                                    <input th:value="${laporan.pertemuan}" th:field="*{pertemuan}" type="number" class="form-control" placeholder="Masukkan Pertemuan" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Keterangan</label>
+                                    <textarea th:value="${laporan.keterangan}" th:field="*{keterangan}" class="form-control" placeholder="Masukkan Keterangan Anda"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a th:href="@{/Laporan}">
+                                    <button type="button" class="btn btn-warning">Kembali</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/1.12.3/dist/jquery.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/select2/4.0.2/dist/js/select2.min.js}" type="application/javascript"></script>
+        <script type="text/javascript">
+            $('select').select2({
+                placeholder: "Pilih Praktikum",
+                allowClear: true
+            });
+        </script>
+
+    </body>
+</html>
