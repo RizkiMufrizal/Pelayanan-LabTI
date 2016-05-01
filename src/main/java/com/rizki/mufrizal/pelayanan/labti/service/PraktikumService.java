@@ -17,7 +17,7 @@ public interface PraktikumService {
 
     public void ubahPraktikum(Praktikum praktikum);
 
-    public void hapusPraktikum(Praktikum praktikum);
+    public void hapusPraktikum(String idPraktikum);
 
     public Praktikum getPraktikum(String idPraktikum);
 
