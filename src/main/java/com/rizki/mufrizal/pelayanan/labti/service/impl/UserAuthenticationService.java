@@ -31,8 +31,8 @@ public class UserAuthenticationService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        com.rizki.mufrizal.pelayanan.labti.domain.User user = userRepository.loginUser(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        com.rizki.mufrizal.pelayanan.labti.domain.User user = userRepository.loginUser(username);
 
         if (user != null) {
             List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRoles());
@@ -43,7 +43,7 @@ public class UserAuthenticationService implements UserDetailsService {
     }
 
     private User buildUserForAuthentication(com.rizki.mufrizal.pelayanan.labti.domain.User user, List<GrantedAuthority> grantedAuthorities) {
-        return new User(user.getEmail(), user.getPassword(), user.getEnable(), true, true, true, grantedAuthorities);
+        return new User(user.getUsername(), user.getPassword(), user.getEnable(), true, true, true, grantedAuthorities);
     }
 
     private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
