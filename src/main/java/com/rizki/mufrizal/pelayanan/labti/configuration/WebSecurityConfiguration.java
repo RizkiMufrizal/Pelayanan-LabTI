@@ -1,6 +1,7 @@
 package com.rizki.mufrizal.pelayanan.labti.configuration;
 
 import com.rizki.mufrizal.pelayanan.labti.service.impl.UserAuthenticationService;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 /**
  * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
@@ -29,9 +33,26 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserAuthenticationService userAuthenticationService;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepositoryImpl.setDataSource(dataSource);
+        return jdbcTokenRepositoryImpl;
+    }
+
+    @Bean
+    public SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
+        SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler = new SavedRequestAwareAuthenticationSuccessHandler();
+        savedRequestAwareAuthenticationSuccessHandler.setTargetUrlParameter("targetUrl");
+        return savedRequestAwareAuthenticationSuccessHandler;
     }
 
     @Autowired
@@ -46,6 +67,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("webjars/**").permitAll()
+                .antMatchers("administrator/**").hasRole("ADMINISTRATOR")
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
@@ -56,7 +78,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout")
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/403")
+                .and()
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                .tokenValiditySeconds(1209600);
     }
 
 }
