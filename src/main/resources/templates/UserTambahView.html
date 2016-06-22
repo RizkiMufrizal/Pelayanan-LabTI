@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+    @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+    @Since Jun 22, 2016
+    @Time 11:59:29 PM
+    @Encoding UTF-8
+    @Project Pelayanan-LabTI
+    @Package Expression package is undefined on line 8, column 16 in Templates/Other/html.html.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/stylesheet/sb-admin.css}" />
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <div th:replace="Navbar :: navbar"></div>
+
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Tambah User
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li class="active">
+                                    <i class="glyphicon glyphicon-dashboard"></i> Tambah User
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form th:object="${user}" th:action="@{/SimpanUser}" method="post">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input th:field="*{username}" type="text" class="form-control" placeholder="Masukkan Nama User" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input th:field="*{password}" type="password" class="form-control" placeholder="Masukkan Jumlah Pertemuan" />
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a th:href="@{/User}">
+                                    <button type="button" class="btn btn-warning">Kembali</button>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/2.0.0/jquery.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js}" type="application/javascript"></script>
+
+    </body>
+</html>
+
