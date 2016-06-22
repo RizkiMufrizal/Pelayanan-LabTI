@@ -36,7 +36,7 @@ public class UserRole implements Serializable {
     @Column(name = "id_user_role", length = 150)
     private String idUserRole;
 
-    @Column(name = "role", length = 10)
+    @Column(name = "role", length = 30)
     private String role;
 
     @JsonIgnore
