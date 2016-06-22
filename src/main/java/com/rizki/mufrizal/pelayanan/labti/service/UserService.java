@@ -16,4 +16,10 @@ public interface UserService {
 
     User getUser(String username);
 
+    void simpanUser(User user);
+
+    void deleteUser(String username);
+
+    Iterable<User> users();
+
 }
