@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.envers.Audited;
 
 /**
  * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
@@ -23,6 +24,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
+@Audited
 @Table(name = "tb_user")
 public class User implements Serializable {
 

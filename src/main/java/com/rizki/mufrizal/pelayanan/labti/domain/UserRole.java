@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.envers.Audited;
 
 /**
  * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
@@ -25,6 +26,7 @@ import org.hibernate.annotations.GenericGenerator;
  *
  */
 @Entity
+@Audited
 @Table(name = "tb_user_role")
 public class UserRole implements Serializable {
 

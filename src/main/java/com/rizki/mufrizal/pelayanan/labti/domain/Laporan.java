@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.envers.Audited;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -29,6 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  */
 @Entity
+@Audited
 @Table(name = "tb_laporan")
 public class Laporan implements Serializable {
 

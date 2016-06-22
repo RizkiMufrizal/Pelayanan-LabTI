@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.envers.Audited;
 
 /**
  * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
@@ -24,6 +25,7 @@ import org.hibernate.annotations.GenericGenerator;
  *
  */
 @Entity
+@Audited
 @Table(name = "tb_praktikum")
 public class Praktikum implements Serializable {
 
