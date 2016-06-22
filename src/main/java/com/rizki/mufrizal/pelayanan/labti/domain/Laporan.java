@@ -64,6 +64,11 @@ public class Laporan implements Serializable {
     @JoinColumn(name = "idPraktikum", nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private Praktikum praktikum;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username", nullable = false, foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+    private User user;
+
     /**
      * @return the idLaporan
      */
@@ -174,5 +179,19 @@ public class Laporan implements Serializable {
      */
     public void setPraktikum(Praktikum praktikum) {
         this.praktikum = praktikum;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 }
