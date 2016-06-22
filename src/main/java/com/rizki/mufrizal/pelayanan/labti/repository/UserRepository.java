@@ -16,7 +16,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface UserRepository extends PagingAndSortingRepository<User, String> {
 
-    @Query("select u from User u left join fetch u.userRoles pd where u.email = :email")
-    User loginUser(@Param("email") String email);
+    @Query("select u from User u left join fetch u.userRoles pd where u.username = :username")
+    User loginUser(@Param("username") String username);
 
 }
