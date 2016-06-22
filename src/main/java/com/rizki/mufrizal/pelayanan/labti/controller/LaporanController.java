@@ -2,8 +2,11 @@ package com.rizki.mufrizal.pelayanan.labti.controller;
 
 import com.rizki.mufrizal.pelayanan.labti.domain.Laporan;
 import com.rizki.mufrizal.pelayanan.labti.domain.Praktikum;
+import com.rizki.mufrizal.pelayanan.labti.domain.User;
 import com.rizki.mufrizal.pelayanan.labti.service.LaporanService;
 import com.rizki.mufrizal.pelayanan.labti.service.PraktikumService;
+import com.rizki.mufrizal.pelayanan.labti.service.UserService;
+import java.security.Principal;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -33,6 +36,9 @@ public class LaporanController {
     @Autowired
     private PraktikumService praktikumService;
 
+    @Autowired
+    private UserService userService;
+
     @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/Laporan", method = RequestMethod.GET)
     public String ambilLaporan(Model model) {
@@ -50,7 +56,7 @@ public class LaporanController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/SimpanLaporan", method = RequestMethod.POST)
-    public String simpanLaporan(@ModelAttribute("laporan") @Valid Laporan laporan, BindingResult result) {
+    public String simpanLaporan(@ModelAttribute("laporan") @Valid Laporan laporan, BindingResult result, Principal principal) {
 
         Praktikum praktikum = praktikumService.getPraktikum(laporan.getPraktikum().getIdPraktikum());
 
@@ -60,7 +66,10 @@ public class LaporanController {
             return "redirect:/TambahLaporan?jumlahTidakMasukMelebihiBatas";
         }
 
+        User user = userService.getUser(principal.getName());
+
         laporan.setPraktikum(praktikum);
+        laporan.setUser(user);
 
         laporanService.simpanLaporan(laporan);
         return "redirect:/Laporan";
@@ -76,10 +85,13 @@ public class LaporanController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/UpdateLaporan", method = RequestMethod.POST)
-    public String updateLaporan(@ModelAttribute("laporan") Laporan laporan) {
+    public String updateLaporan(@ModelAttribute("laporan") Laporan laporan, Principal principal) {
 
         Praktikum praktikum = praktikumService.getPraktikum(laporan.getPraktikum().getIdPraktikum());
+        User user = userService.getUser(principal.getName());
+
         laporan.setPraktikum(praktikum);
+        laporan.setUser(user);
 
         laporanService.ubahLaporan(laporan);
         return "redirect:/Laporan";
