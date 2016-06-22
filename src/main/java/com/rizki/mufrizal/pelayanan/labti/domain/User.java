@@ -1,7 +1,9 @@
 package com.rizki.mufrizal.pelayanan.labti.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,30 +27,33 @@ import javax.persistence.Table;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "email", length = 50)
-    private String email;
+    @Column(name = "username", length = 50)
+    private String username;
 
     @Column(name = "password", length = 150)
     private String password;
-    
+
     @Column(name = "enable")
     private Boolean enable;
-    
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Laporan> laporans = new ArrayList<>();
+
     /**
-     * @return the email
+     * @return the username
      */
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * @param email the email to set
+     * @param username the username to set
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -91,6 +96,20 @@ public class User implements Serializable {
      */
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    /**
+     * @return the laporans
+     */
+    public List<Laporan> getLaporans() {
+        return laporans;
+    }
+
+    /**
+     * @param laporans the laporans to set
+     */
+    public void setLaporans(List<Laporan> laporans) {
+        this.laporans = laporans;
     }
 
 }
