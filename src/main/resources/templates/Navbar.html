@@ -32,6 +32,9 @@
             <li>
                 <a th:href="@{/Laporan}"><i class="glyphicon glyphicon-dashboard"></i> Data Laporan</a>
             </li>
+            <li>
+                <a th:if="${#authentication.name == 'administrator'}" th:href="@{/User}"><i class="glyphicon glyphicon-dashboard"></i> Data User</a>
+            </li>
         </ul>
     </div>
 </nav>
