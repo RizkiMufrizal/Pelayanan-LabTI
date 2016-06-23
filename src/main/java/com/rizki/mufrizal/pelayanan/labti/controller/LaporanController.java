@@ -39,14 +39,14 @@ public class LaporanController {
     @Autowired
     private UserService userService;
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/Laporan", method = RequestMethod.GET)
     public String ambilLaporan(Model model) {
         model.addAttribute("laporans", laporanService.getLaporans());
         return "LaporanView";
     }
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/TambahLaporan", method = RequestMethod.GET)
     public String tambahLaporan(Model model) {
         model.addAttribute("laporan", new Laporan());
@@ -54,7 +54,7 @@ public class LaporanController {
         return "LaporanTambahView";
     }
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/SimpanLaporan", method = RequestMethod.POST)
     public String simpanLaporan(@ModelAttribute("laporan") @Valid Laporan laporan, BindingResult result, Principal principal) {
 
@@ -75,7 +75,7 @@ public class LaporanController {
         return "redirect:/Laporan";
     }
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/EditLaporan/{idLaporan}", method = RequestMethod.GET)
     public String editLaporan(Model model, @PathVariable("idLaporan") String idLaporan) {
         model.addAttribute("laporan", laporanService.getLaporan(idLaporan));
@@ -83,7 +83,7 @@ public class LaporanController {
         return "LaporanEditView";
     }
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/UpdateLaporan", method = RequestMethod.POST)
     public String updateLaporan(@ModelAttribute("laporan") Laporan laporan, Principal principal) {
 
@@ -97,7 +97,7 @@ public class LaporanController {
         return "redirect:/Laporan";
     }
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/HapusLaporan/{idLaporan}", method = RequestMethod.GET)
     public String hapusLaporan(@PathVariable("idLaporan") String idLaporan) {
         laporanService.hapusLaporan(idLaporan);

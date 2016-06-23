@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PageController {
 
-    @Secured(value = {"ROLE_ADMIN"})
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "IndexView";
