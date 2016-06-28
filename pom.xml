@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <tomcat.version>8.5.2</tomcat.version>
+        <h2.version>1.4.192</h2.version>
     </properties>
 
     <dependencies>
