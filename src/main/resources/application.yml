@@ -14,8 +14,8 @@ spring:
         
     # spring datasource jpa
     datasource: 
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/pelayanan?autoReconnect=true
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:./database/pelayanan
         username: root
         password: root
         poolName: SpringBootHikariCP
