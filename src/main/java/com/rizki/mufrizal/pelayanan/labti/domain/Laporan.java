@@ -50,7 +50,7 @@ public class Laporan implements Serializable {
     private String kelas;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-M-dd")
     @Column(name = "tanggal_lapor", nullable = false)
     private Date tanggalLapor;
 
