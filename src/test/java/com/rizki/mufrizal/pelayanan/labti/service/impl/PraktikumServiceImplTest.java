@@ -64,7 +64,6 @@ public class PraktikumServiceImplTest {
             Long jumlahRow = resultSet.getLong("jumlah");
             Assert.assertEquals(1L, jumlahRow.longValue());
         }
-
     }
 
     @Test
