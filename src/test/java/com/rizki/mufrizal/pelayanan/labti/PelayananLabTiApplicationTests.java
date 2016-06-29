@@ -1,18 +1,23 @@
 package com.rizki.mufrizal.pelayanan.labti;
 
-import org.junit.Test;
+import com.rizki.mufrizal.pelayanan.labti.service.impl.PraktikumServiceImplTest;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.junit.runners.Suite;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = PelayananLabTiApplication.class)
-@WebAppConfiguration
+/**
+ *
+ * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
+ * @Since Jun 29, 2016
+ * @Time 7:53:53 PM
+ * @Encoding UTF-8
+ * @Project Pelayanan-LabTI
+ * @Package com.rizki.mufrizal.pelayanan.labti
+ *
+ */
+@RunWith(value = Suite.class)
+@Suite.SuiteClasses({
+    PraktikumServiceImplTest.class
+})
 public class PelayananLabTiApplicationTests {
-
-    @Test
-    public void contextLoads() {
-    }
 
 }
