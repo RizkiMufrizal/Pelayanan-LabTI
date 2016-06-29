@@ -131,6 +131,43 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>2.11</version>
+                <configuration>
+                    <header>com/mycila/maven/plugin/license/templates/APACHE-2.txt</header>
+                    <properties>
+                        <owner>Rizki Mufrizal (https://rizkimufrizal.github.io/)</owner>
+                        <email>mufrizalrizki@gmail.com</email>
+                        <project.url>https://github.com/RizkiMufrizal/Pelayanan-LabTI</project.url>
+                        <project.inceptionYear>2016</project.inceptionYear>
+                        <project.groupId>com.rizki.mufrizal.pelayanan.labti</project.groupId>
+                        <project.artifactId>Pelayanan-LabTI</project.artifactId>
+                        <project.name>Pelayanan LabTI</project.name>
+                    </properties>
+                    <excludes>
+                        <exclude>**/README</exclude>
+                        <exclude>PelayananLabTI.csv</exclude>
+                        <exclude>database/**</exclude>
+                        <exclude>logs/**</exclude>
+                        <exclude>target/**</exclude>
+                        <exclude>LICENSE</exclude>
+                        <exclude>pom.xml</exclude>
+                        <exclude>src/main/resources/ehcache3.xml</exclude>
+                        <exclude>src/main/resources/application.yml</exclude>
+                        <exclude>src/main/resources/static/stylesheet/sb-admin.css</exclude>
+                        <exclude>src/main/resources/static/stylesheet/signin.css</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 	
