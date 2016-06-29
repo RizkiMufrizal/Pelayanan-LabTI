@@ -1,5 +1,6 @@
 package com.rizki.mufrizal.pelayanan.labti;
 
+import com.rizki.mufrizal.pelayanan.labti.service.impl.LaporanServiceImplTest;
 import com.rizki.mufrizal.pelayanan.labti.service.impl.PraktikumServiceImplTest;
 import com.rizki.mufrizal.pelayanan.labti.service.impl.UserServiceImplTest;
 import org.junit.runner.RunWith;
@@ -18,7 +19,8 @@ import org.junit.runners.Suite;
 @RunWith(value = Suite.class)
 @Suite.SuiteClasses({
     PraktikumServiceImplTest.class,
-    UserServiceImplTest.class
+    UserServiceImplTest.class,
+    LaporanServiceImplTest.class
 })
 public class PelayananLabTiApplicationTests {
 
