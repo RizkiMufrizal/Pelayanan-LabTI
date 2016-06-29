@@ -19,8 +19,14 @@ public class AuditLogUsernameListener implements RevisionListener {
     @Override
     public void newRevision(Object object) {
         AuditLogUsername auditLogUsername = (AuditLogUsername) object;
+        String username;
 
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            username = SecurityContextHolder.getContext().getAuthentication().getName();
+        } else {
+            username = "test";
+        }
+
         auditLogUsername.setUsername(username);
     }
 
