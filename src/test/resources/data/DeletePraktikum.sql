@@ -8,4 +8,5 @@
  * @Package Expression package is undefined on line 8, column 15 in Templates/Other/SQLTemplate.sql.
  *
  */
+delete from tb_laporan;
 delete from tb_praktikum;
