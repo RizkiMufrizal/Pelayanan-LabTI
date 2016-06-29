@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @Author rizki
+ * @Author Rizki Mufrizal <mufrizalrizki@gmail.com>
  * @Since Jun 28, 2016
  * @Time 11:52:10 AM
  * @Encoding UTF-8
