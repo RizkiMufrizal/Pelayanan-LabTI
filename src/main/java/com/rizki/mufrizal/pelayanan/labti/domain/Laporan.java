@@ -32,6 +32,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -73,6 +74,7 @@ public class Laporan implements Serializable {
     private Integer pertemuan;
 
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     @Column(name = "keterangan", nullable = false)
     private String keterangan;
 
