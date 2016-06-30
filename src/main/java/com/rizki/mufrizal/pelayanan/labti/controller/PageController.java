@@ -38,4 +38,10 @@ public class PageController {
         return "IndexView";
     }
 
+    @Secured(value = {"ROLE_ADMIN", "ROLE_ADMINISTRATOR"})
+    @RequestMapping(value = "/About", method = RequestMethod.GET)
+    public String about() {
+        return "AboutView";
+    }
+
 }
