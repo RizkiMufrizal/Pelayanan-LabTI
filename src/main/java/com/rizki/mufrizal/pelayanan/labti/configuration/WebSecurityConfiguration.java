@@ -41,7 +41,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
  *
  */
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
