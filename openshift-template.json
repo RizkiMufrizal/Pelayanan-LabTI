@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: demo-openshift
+  spec:
+    ports:
+    - port: 8080
+      targetPort: 8080
+    selector:
+      deploymentconfig: demo-openshift
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: demo-openshift
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: demo-openshift
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          deploymentconfig: demo-openshift
+      spec:
+        containers:
+        - image: rizkimufrizal/demo-openshift:latest
+          name: demo-openshiftdemo-openshift
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - demo-openshift
+        from:
+          kind: ImageStreamTag
+          name: demo-openshift:latest
+      type: ImageChange
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: demo-openshift
+  spec:
+    dockerImageRepository: rizkimufrizal/demo-openshift
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: demo-openshift
+  spec:
+    to:
+      kind: Service
+      name: demo-openshift
