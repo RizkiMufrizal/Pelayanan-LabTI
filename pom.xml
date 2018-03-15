@@ -6,7 +6,7 @@
     <groupId>com.rizki.mufrizal.pelayanan.labti</groupId>
     <artifactId>Pelayanan-LabTI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>Pelayanan-LabTI</name>
     <description>aplikasi untuk pelayanan labti</description>
@@ -180,7 +180,7 @@
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.war</include>
+                            <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
                 </configuration>

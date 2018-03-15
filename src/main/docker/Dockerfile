@@ -1,5 +1,5 @@
-FROM tomcat:8-alpine
+FROM openjdk:8-jdk-alpine
 
 EXPOSE 8080
-ADD tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
-ADD demo-openshift.war /usr/local/tomcat/webapps/demo-openshift.war
+ADD demo-openshift.jar /demo-openshift.jar
+ENTRYPOINT ["java","-jar","/demo-openshift.jar"]

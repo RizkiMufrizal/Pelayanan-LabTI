@@ -27,8 +27,8 @@ items:
           deploymentconfig: demo-openshift
       spec:
         containers:
-        - image: rizkimufrizal/demo-openshift:latest
-          name: demo-openshiftdemo-openshift
+        - image: docker.io/rizkimufrizal/demo-openshift:latest
+          name: demo-openshift
           ports:
           - containerPort: 8080
             protocol: TCP
@@ -47,7 +47,7 @@ items:
   metadata:
     name: demo-openshift
   spec:
-    dockerImageRepository: rizkimufrizal/demo-openshift
+    dockerImageRepository: docker.io/rizkimufrizal/demo-openshift
 - apiVersion: v1
   kind: Route
   metadata:
