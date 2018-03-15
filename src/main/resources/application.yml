@@ -49,9 +49,3 @@ spring:
     # spring thymeleaf
     thymeleaf: 
         cache: false
-
-# tomcat konfiguration
-server: 
-    tomcat: 
-        access_log_enabled: true
-        basedir: target/tomcat
