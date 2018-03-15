@@ -15,7 +15,7 @@ spring:
     # spring datasource jpa
     datasource: 
         driver-class-name: org.h2.Driver
-        url: jdbc:h2:file:./database/pelayanan
+        url: jdbc:h2:mem:pelayanan;DB_CLOSE_DELAY=-1
         username: administrator
         password: administratorlabti2016
         poolName: SpringBootHikariCP
