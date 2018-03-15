@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8
 
 EXPOSE 8080
 ADD demo-openshift.jar /demo-openshift.jar
